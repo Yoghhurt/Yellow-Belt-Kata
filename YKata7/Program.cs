@@ -15,7 +15,7 @@
         get { return level; }
         set
         {
-            if (value < 0)
+            if (value >= 0)
             {
                 level = value;
             }
@@ -31,7 +31,7 @@
         get { return experience; }
         set
         {
-            if (value < 0)
+            if (value >= 0)
             {
                 experience = value;
             }
