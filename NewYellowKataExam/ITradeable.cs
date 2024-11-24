@@ -2,5 +2,5 @@
 
 public interface ITradeable
 {
-    void Trade();
+    void Trade(Player player);
 }

@@ -7,6 +7,7 @@ public class Player : ICombatable, ISpeakable
     public int Level { get; set; }
     public int Experience { get; set; }
     public int Damage { get; set; }
+    public int Gold { get; set; }
 
     public Player(string name)
     {
@@ -14,6 +15,7 @@ public class Player : ICombatable, ISpeakable
         Health = 100;
         Level = 1;
         Experience = 0;
+        Gold = 50;
     }
 
     public void Attack(ICombatable target)
@@ -51,5 +53,20 @@ public class Player : ICombatable, ISpeakable
         Level += 1;
         Experience = 0;
         Console.WriteLine($"Congratulations! You reached level {Level}!");
+    }
+
+    public bool BuyItem(string item, int price)
+    {
+        if (Gold >= price)
+        {
+            Gold -= price;
+            Console.WriteLine($"{Name} purchased {item} for {price} gold. Remaining gold: {Gold}");
+            return true;
+        }
+        else
+        {
+            Console.WriteLine($"{Name} doesn't have enough gold to purchase {item}. Gold left: {Gold}");
+            return false;
+        }
     }
 }
