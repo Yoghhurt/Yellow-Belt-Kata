@@ -1,6 +1,6 @@
-﻿namespace DefaultNamespace;
+﻿namespace NewYellowKataExam;
 
-public class Enemy : Combating
+public class Enemy : ICombatable
 {
     public string Type { get; set; }
     public int Health { get; set; }
@@ -9,14 +9,9 @@ public class Enemy : Combating
     public Enemy(string type)
     {
         Type = type;
-        Health = 30; 
-        Damage = 5;  
-    }
-
-    public void Attack(ICombatable target)
-    {
-        Console.WriteLine($"{Type} attacks the player for {Damage} damage.");
-        target.TakeDamage(Damage);
+        Random rnd = new Random();
+        Health = rnd.Next(30, 100);
+        Damage = rnd.Next(5, 20);
     }
 
     public void TakeDamage(int damage)
@@ -24,4 +19,6 @@ public class Enemy : Combating
         Health -= damage;
         Console.WriteLine($"{Type} takes {damage} damage. Remaining health: {Health}");
     }
+    
+    public bool isAlive() => Health > 0;
 }
